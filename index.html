@@ -3,120 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Docencia</title>
+  <title>Mi video favorito</title>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      text-align: center;
       margin: 0;
       padding: 0;
-    }
-    header {
-      background-color: #4a68d1;
-      color: white;
-      padding: 15px;
-    }
-    section {
-      margin: 20px;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      text-align: center;
+      background-color: #f5f5f5;
     }
 
-    /* --- Estilos del chatbot --- */
-    .chatbot-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #0078d4;
-      color: white;
+    h2 {
+      margin-top: 30px;
+    }
+
+    /* Contenedor general */
+    .content {
+      margin: 20px auto;
+      max-width: 1000px;
+    }
+
+    /* Estilo para los iframes */
+    iframe {
+      display: block;
+      margin: 30px auto;     /* separa cada iframe */
       border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
-      z-index: 9999;
-    }
-
-    .chatbot-frame {
-      display: none;
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 400px;
+      width: 90%;
+      max-width: 900px;
       height: 500px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 15px;
-      z-index: 9999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 8px;
     }
 
-    /* --- Imagen principal --- */
-    .perfil {
-      width: 250px;
-      border-radius: 50%;
-      margin-top: 20px;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 14px;
+      margin-top: 40px; /* lo baja más respecto al contenido */
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Asesorías Docencia</h1>
-  </header>
+  <h2>Mi video favorito</h2>
 
-  <section>
-    <h2>Sobre mí</h2>
-    <p>Hola, soy el instructor Fernando Marmolejo Urriago. En este portal podrás escribir todas las inquietudes sobre temas acerca de las sesiones sincrónicas.</p>
-
-    <!-- 🔽 Imagen embebida -->
-    <img src="yo.jpg" alt="Foto del instructor" class="perfil">
-
-
-    <h2>Mi video favorito</h2>
-    <iframe width="500" height="300"
-      src="https://www.youtube.com/embed/UFKJ_1lE79o"
-      title="Video"
-      frameborder="0"
+  <div class="content">
+    <!-- PRIMER IFRAME: YouTube -->
+    <iframe 
+      src="https://www.youtube.com/embed/XXXXXXXXXXX" 
+      title="Mi video favorito"
       allowfullscreen>
     </iframe>
 
-  </section>
-  
-<iframe title="CALIFICACIONES FICHAS" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjNkMjI2NTYtZmQxMS00MzIzLWI1NWYtNmQyZmI3OTdiOWFjIiwidCI6ImNiYzJjMzgxLTJmMmUtNGQ5My05MWQxLTUwNmM5MzE2YWNlNyIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
-
-  </section>
+    <!-- SEGUNDO IFRAME: Power BI -->
+    <iframe 
+      src="https://app.powerbi.com/view?r=eyJrIjoiXXXXXXXXXXX"
+      title="Informe Power BI"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <footer>
-    <p>© 2025 / fmarmolejo@sena.edu.co</p>
+    © 2025 / fmarmolejo@sena.edu.co
   </footer>
 
-  <!-- Chatbot embebido desde Colab -->
-  <button onclick="toggleChat()" class="chatbot-btn">💬</button>
-
-  <iframe id="chatbot"
-    class="chatbot-frame"
-    src="https://bb737e0478f3e5d6f5.gradio.live/"
-    frameborder="0">
-  </iframe>
-
+<!-- Chatbot embebido desde Colab -->
+<div class="row sectionBlockLayout" style="padding: 20px; margin: 0px; display: flex; flex-wrap: wrap; text-align: center; min-height: auto;">
+  <!-- Chatbot flotante con iframe --><!-- Botón --><button onclick="toggleChat()" class="chatbot-btn" style="position: fixed; bottom: 20px; right: 20px; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(0, 120, 212); color: white; border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; width: 60px; height: 60px; font-size: 28px; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px; z-index: 9999;">💬</button
+  ><!-- Iframe con tu chatbot de Colab --><iframe frameborder="0" id="chatbot" src="https://bb737e0478f3e5d6f5.gradio.live/" class="chatbot-frame" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 400px; height: 500px; border-top-width: initial; border-right-width: initial; border-bottom-width: initial; border-left-width: initial; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 15px; z-index: 9999;"> </iframe>
   <script>
     function toggleChat() {
       const frame = document.getElementById("chatbot");
       frame.style.display = (frame.style.display === "none" || frame.style.display === "")
-        ? "block"
-        : "none";
+                            ? "block" : "none";
     }
   </script>
 
