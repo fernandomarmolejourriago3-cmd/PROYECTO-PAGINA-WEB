@@ -3,53 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi video favorito</title>
+  <title>Portal Docencia</title>
 
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
       margin: 0;
       padding: 0;
-      text-align: center;
-      background-color: #f5f5f5;
     }
-
-    /* Imagen inicial o encabezado */
-    .header-image {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover; /* recorta suavemente si la imagen es grande */
-    }
-
-    h2 {
-      margin-top: 20px;
-    }
-
-    .content {
-      margin: 20px auto;
-      max-width: 1000px;
-    }
-
-    /* Estilo general de los iframes */
-    iframe {
-      display: block;
-      margin: 30px auto;
-      border: none;
-      width: 90%;
-      max-width: 900px;
-      height: 500px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      border-radius: 8px;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #222;
+    header {
+      background-color: #4a68d1;
       color: white;
-      text-align: center;
-      padding: 8px 0;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 15px;
+    }
+    section {
+      margin: 40px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* --- Estilos del chatbot --- */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+      z-index: 9999;
+    }
+
+    .chatbot-frame {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 400px;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 15px;
+      z-index: 9999;
+    }
+
+    /* --- Imagen principal --- */
+    .perfil {
+      width: 250px;
+      border-radius: 50%;
+      margin-top: 20px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
     }
   </style>
 </head>
