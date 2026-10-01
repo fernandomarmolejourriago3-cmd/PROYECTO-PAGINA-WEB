@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Portal de Docencia</title>
 
   <style>
-    /* --- ESTILOS GENERALES --- */
+
+    /* =====================================================
+       ESTILOS GENERALES
+    ===================================================== */
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f7f7f7;
@@ -50,7 +57,11 @@
       width: 100%;
     }
 
-    /* --- PERFIL --- */
+
+    /* =====================================================
+       PERFIL
+    ===================================================== */
+
     .perfil {
       width: 180px;
       border-radius: 50%;
@@ -58,13 +69,18 @@
       box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px;
     }
 
-    /* --- PESTAÑAS --- */
+
+    /* =====================================================
+       PESTAÑAS
+    ===================================================== */
+
     .tab-container {
       background-color: white;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
       margin-top: 40px;
       padding-bottom: 20px;
+      overflow: hidden;
     }
 
     .tab-buttons {
@@ -76,7 +92,7 @@
       border-bottom: 2px solid #ddd;
     }
 
-     .tab-buttons button {
+    .tab-buttons button {
       border: none;
       background: none;
       padding: 12px 25px;
@@ -102,14 +118,167 @@
       display: block;
     }
 
-    iframe {
+
+    /* =====================================================
+       IFRAMES DEL CONTENIDO
+       NO AFECTA AL CHATBOT PORQUE ESTE TIENE
+       LA CLASE .chatbot-frame CON MAYOR ESPECIFICIDAD
+    ===================================================== */
+
+    .tab-content iframe {
       width: 100%;
       height: 400px;
       border: none;
       border-radius: 8px;
     }
 
-    /* --- TARJETAS DE CURSOS --- */
+
+    /* =====================================================
+       AGENDA
+    ===================================================== */
+
+    .agenda-card {
+      max-width: 700px;
+      margin: 10px auto 30px auto;
+      background-color: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .agenda-header {
+      background: linear-gradient(135deg, #003366, #005b96);
+      color: white;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .agenda-icon {
+      font-size: 42px;
+    }
+
+    .agenda-header h2 {
+      margin: 0 0 5px 0;
+      font-size: 25px;
+    }
+
+    .agenda-header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       FORMULARIO DE AGENDA
+    ===================================================== */
+
+    .agenda-form {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .campo-completo {
+      grid-column: 1 / -1;
+    }
+
+    .campo label {
+      font-size: 13px;
+      font-weight: bold;
+      color: #003366;
+      margin-bottom: 7px;
+    }
+
+    .campo input,
+    .campo textarea {
+      border: 1px solid #d5d5d5;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .campo textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .campo input:focus,
+    .campo textarea:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+    }
+
+
+    /* =====================================================
+       BOTON AGENDA
+    ===================================================== */
+
+    .btn-agenda {
+      grid-column: 1 / -1;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-agenda:hover {
+      background-color: #3d9142;
+    }
+
+    .btn-agenda:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+
+
+    /* =====================================================
+       MENSAJES AGENDA
+    ===================================================== */
+
+    #mensajeAgenda {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-weight: bold;
+      min-height: 22px;
+    }
+
+    .mensaje-exito {
+      color: #2e7d32;
+      background-color: #e8f5e9;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .mensaje-error {
+      color: #c62828;
+      background-color: #ffebee;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+
+    /* =====================================================
+       TARJETAS DE CURSOS
+    ===================================================== */
+
     .cursos-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -142,7 +311,12 @@
       font-size: 14px;
     }
 
-    /* --- CHATBOT FLOTANTE --- */
+
+    /* =====================================================
+       CHATBOT FLOTANTE
+       BLOQUE ORIGINAL - NO SE CONECTA CON POWER AUTOMATE
+    ===================================================== */
+
     .chatbot-btn {
       position: fixed;
       bottom: 20px;
@@ -170,123 +344,775 @@
       border-radius: 12px;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 15px;
       z-index: 9999;
+      background: none !important;
     }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+      section {
+        width: 94%;
+        margin: 25px auto;
+      }
+
+      .tab-buttons button {
+        width: 100%;
+        border-radius: 0;
+      }
+
+      .agenda-form {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .campo-completo,
+      .btn-agenda,
+      #mensajeAgenda {
+        grid-column: 1;
+      }
+
+      .agenda-header {
+        padding: 20px;
+      }
+
+      .agenda-icon {
+        font-size: 32px;
+      }
+
+      .agenda-header h2 {
+        font-size: 21px;
+      }
+
+      .chatbot-frame {
+        width: calc(100% - 30px);
+        height: 500px;
+        right: 15px;
+      }
+
+    }
+
   </style>
+
 </head>
 
+
 <body>
-  <!-- ENCABEZADO -->
+
+
+  <!-- =====================================================
+       ENCABEZADO
+  ===================================================== -->
+
   <header>
     Portal de Docencia
   </header>
+
   <div class="subheader">
     ¡Hola, APRENDIZ! 👋
   </div>
 
-  <!-- SECCIÓN PRINCIPAL -->
+
+  <!-- =====================================================
+       SECCIÓN PRINCIPAL
+  ===================================================== -->
+
   <section>
+
     <h2>Sobre mí</h2>
-    <p>Hola, soy el instructor <b>Fernando Marmolejo Urriago</b>. En este portal podrás escribir todas las inquietudes sobre temas acerca de las sesiones sincrónicas.</p>
-    <img src="yo.jpg" alt="Foto del instructor" class="perfil">
 
-    <!-- CONTENEDOR DE PESTAÑAS -->
+    <p>
+      Hola, soy el instructor
+      <b>Fernando Marmolejo Urriago</b>.
+      En este portal podrás escribir todas las inquietudes
+      sobre temas acerca de las sesiones sincrónicas.
+    </p>
+
+    <img
+      src="yo.jpg"
+      alt="Foto del instructor"
+      class="perfil"
+    >
+
+
+    <!-- ===================================================
+         CONTENEDOR DE PESTAÑAS
+    ==================================================== -->
+
     <div class="tab-container">
+
+
+      <!-- BOTONES DE PESTAÑAS -->
+
       <div class="tab-buttons">
-        <button class="tab-link active" onclick="openTab(event, 'tab1')">🔊 Presentación</button>
-        <button class="tab-link" onclick="openTab(event, 'tab2')">📊 Observaciones al profesor</button>
-        <button class="tab-link" onclick="openTab(event, 'tab3')">📅  Agenda</button>
+
+        <button
+          class="tab-link active"
+          onclick="openTab(event, 'tab1')">
+
+          🔊 Presentación
+
+        </button>
+
+
+        <button
+          class="tab-link"
+          onclick="openTab(event, 'tab2')">
+
+          📊 Observaciones al profesor
+
+        </button>
+
+
+        <button
+          class="tab-link"
+          onclick="openTab(event, 'tab3')">
+
+          📅 Agenda
+
+        </button>
+
       </div>
 
-      <div id="tab1" class="tab-content active">
-        <h3>Bienvenidos al portal</h3>
-        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2190437175&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-       </div>
+
+      <!-- =================================================
+           TAB 1 - PRESENTACIÓN
+      ================================================== -->
+
+      <div
+        id="tab1"
+        class="tab-content active">
+
+        <h3>
+          Bienvenidos al portal
+        </h3>
+
+        <iframe
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2190437175&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
+
       </div>
 
-      <div id="tab2" class="tab-content">
-        <h3>Observaciones</h3>
-       <iframe src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAJpMRvhUQkY3UlBCU0IyTVlORUo4Nkk0NUlTM1k2Ny4u&embed=true" allowfullscreen></iframe>
+
+      <!-- =================================================
+           TAB 2 - OBSERVACIONES
+      ================================================== -->
+
+      <div
+        id="tab2"
+        class="tab-content">
+
+        <h3>
+          Observaciones
+        </h3>
+
+        <iframe
+          src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAJpMRvhUQkY3UlBCU0IyTVlORUo4Nkk0NUlTM1k2Ny4u&embed=true"
+          allowfullscreen>
+        </iframe>
+
       </div>
+
+
+      <!-- =================================================
+           TAB 3 - AGENDA
+      ================================================== -->
+
+      <div
+        id="tab3"
+        class="tab-content">
+
+
+        <!-- FORMULARIO DE AGENDA -->
+
+        <div class="agenda-card">
+
+
+          <div class="agenda-header">
+
+            <div class="agenda-icon">
+              📅
+            </div>
+
+            <div>
+
+              <h2>
+                Agendar una cita
+              </h2>
+
+              <p>
+                Seleccione la fecha, hora y registre
+                el motivo de la cita.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="agenda-form">
+
+
+            <!-- FECHA -->
+
+            <div class="campo">
+
+              <label for="fecha">
+                FECHA DE TAREA
+              </label>
+
+              <input
+                type="date"
+                id="fecha"
+              >
+
+            </div>
+
+
+            <!-- HORA -->
+
+            <div class="campo">
+
+              <label for="hora">
+                HORA
+              </label>
+
+              <input
+                type="time"
+                id="hora"
+              >
+
+            </div>
+
+
+            <!-- RESPONSABLE -->
+
+            <div class="campo campo-completo">
+
+              <label for="responsable">
+                RESPONSABLE
+              </label>
+
+              <input
+                type="text"
+                id="responsable"
+                placeholder="Ej. Juan Pérez"
+              >
+
+            </div>
+
+
+            <!-- TAREA -->
+
+            <div class="campo campo-completo">
+
+              <label for="tarea">
+                TAREA
+              </label>
+
+              <textarea
+                id="tarea"
+                rows="4"
+                placeholder="Describa el motivo de la cita..."
+              ></textarea>
+
+            </div>
+
+
+            <!-- BOTÓN -->
+
+            <button
+              type="button"
+              class="btn-agenda"
+              onclick="enviarCita()">
+
+              📅 ENVIAR CITA
+
+            </button>
+
+
+            <!-- MENSAJE -->
+
+            <div id="mensajeAgenda"></div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             POWER BI ORIGINAL
+        ================================================== -->
+
+        <h3>
+          Agenda SENA
+        </h3>
+
+        <iframe
+          title="AGENDA SENA"
+          src="https://app.powerbi.com/view?r=eyJrIjoiOTIwYjMwMjAtMjg4ZC00NTVlLTgzNzktNDI3ZWZjMWYyMjAyIiwidCI6ImIwMzY0YmM1LTNiZmUtNDg2NC1hMmVkLTNlYmI2OGM2MDhhZCIsImMiOjR9"
+          frameborder="0"
+          allowfullscreen="true">
+        </iframe>
+
+
+      </div>
+
+
     </div>
 
-     <div id="tab3" class="tab-content">
-        <h3>Agenda</h3>
-       <iframe title="AGENDA SENA" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOTIwYjMwMjAtMjg4ZC00NTVlLTgzNzktNDI3ZWZjMWYyMjAyIiwidCI6ImIwMzY0YmM1LTNiZmUtNDg2NC1hMmVkLTNlYmI2OGM2MDhhZCIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
-      </div>
-    </div>
 
-    <!-- TARJETAS DE CURSOS -->
-    <h2>Mis Cursos</h2>
+    <!-- =====================================================
+         TARJETAS DE CURSOS
+    ===================================================== -->
+
+    <h2>
+      Mis Cursos
+    </h2>
+
     <div class="cursos-container">
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977151/', '_blank')">
-        <h4>CONTABILIZACIÓN DE OPERACIONES COMERCIALES Y FINANCIERAS (3336328)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977151/', '_blank')">
+
+        <h4>
+          CONTABILIZACIÓN DE OPERACIONES COMERCIALES
+          Y FINANCIERAS (3336328)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
 
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977152/', '_blank')">
-        <h4>DESARROLLO PUBLICITARIO (3466201)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977152/', '_blank')">
+
+        <h4>
+          DESARROLLO PUBLICITARIO (3466201)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
 
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977153/', '_blank')">
-        <h4>GESTIÓN INTEGRAL DEL TRANSPORTE (2977153)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977153/', '_blank')">
+
+        <h4>
+          GESTIÓN INTEGRAL DEL TRANSPORTE (2977153)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
 
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977154/', '_blank')">
-        <h4>GESTIÓN INTEGRAL DEL TRANSPORTE (2977154)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977154/', '_blank')">
+
+        <h4>
+          GESTIÓN INTEGRAL DEL TRANSPORTE (2977154)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
 
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977667-2977668-2977669/', '_blank')">
-        <h4>ANALISIS Y DESARROLLO DE SOFTWARE (3389055, 3389056 Y 3389057)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977667-2977668-2977669/', '_blank')">
+
+        <h4>
+          ANALISIS Y DESARROLLO DE SOFTWARE
+          (3389055, 3389056 Y 3389057)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
-      
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/3118490/', '_blank')">
-        <h4>GESTIÓN INTEGRAL DEL TRANSPORTE (3118490)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/3118490/', '_blank')">
+
+        <h4>
+          GESTIÓN INTEGRAL DEL TRANSPORTE (3118490)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
-         
-      <div class="card" onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977155/', '_blank')">
-        <h4>GESTIÓN INTEGRAL DEL TRANSPORTE (2977155)</h4>
-        <p>Formación Titulada Virtual y a Distancia</p>
+
+
+      <div
+        class="card"
+        onclick="window.open('https://fernandomarmolejourriago3-cmd.github.io/2977155/', '_blank')">
+
+        <h4>
+          GESTIÓN INTEGRAL DEL TRANSPORTE (2977155)
+        </h4>
+
+        <p>
+          Formación Titulada Virtual y a Distancia
+        </p>
+
       </div>
+
+
     </div>
+
   </section>
 
-  <!-- PIE DE PÁGINA -->
+
+  <!-- =====================================================
+       PIE DE PÁGINA
+  ===================================================== -->
+
   <footer>
     © fercho.mar0392@gmail.com
   </footer>
 
-  <!-- CHATBOT -->
-  <button onclick="toggleChat()" class="chatbot-btn">💬</button>
-<iframe frameborder="0" id="chatbot" 
-        src="https://deploy-a1p1.onrender.com"
-        class="chatbot-frame"
-        style="background: none !important;">
-</iframe>
+
+  <!-- =====================================================
+       CHATBOT
+       TOTALMENTE INDEPENDIENTE DE LA AGENDA
+  ===================================================== -->
+
+  <button
+    onclick="toggleChat()"
+    class="chatbot-btn">
+
+    💬
+
+  </button>
 
 
-  <!-- SCRIPT JS -->
+  <iframe
+    frameborder="0"
+    id="chatbot"
+    src="https://deploy-a1p1.onrender.com"
+    class="chatbot-frame"
+    style="background: none !important;">
+  </iframe>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
   <script>
-    // Control de pestañas
+
+
+    /* =====================================================
+       CONTROL DE PESTAÑAS
+    ===================================================== */
+
     function openTab(evt, tabName) {
-      const contents = document.querySelectorAll('.tab-content');
-      const links = document.querySelectorAll('.tab-link');
-      contents.forEach(c => c.classList.remove('active'));
-      links.forEach(l => l.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-      evt.currentTarget.classList.add('active');
+
+      const contents =
+        document.querySelectorAll('.tab-content');
+
+      const links =
+        document.querySelectorAll('.tab-link');
+
+
+      contents.forEach(function(content) {
+
+        content.classList.remove('active');
+
+      });
+
+
+      links.forEach(function(link) {
+
+        link.classList.remove('active');
+
+      });
+
+
+      document
+        .getElementById(tabName)
+        .classList.add('active');
+
+
+      evt.currentTarget
+        .classList.add('active');
+
     }
 
-    // Mostrar/Ocultar chatbot
+
+    /* =====================================================
+       CHATBOT
+       NO SE MODIFICA
+    ===================================================== */
+
     function toggleChat() {
-      const frame = document.getElementById("chatbot");
-      frame.style.display = (frame.style.display === "none" || frame.style.display === "")
-                            ? "block" : "none";
+
+      const frame =
+        document.getElementById("chatbot");
+
+
+      frame.style.display =
+        (
+          frame.style.display === "none" ||
+          frame.style.display === ""
+        )
+        ? "block"
+        : "none";
+
     }
+
+
+    /* =====================================================
+       AGENDA
+       POWER AUTOMATE → DATAVERSE
+    ===================================================== */
+
+    async function enviarCita() {
+
+
+      /* ---------------------------------------------------
+         OBTENER DATOS
+      --------------------------------------------------- */
+
+      const fecha =
+        document
+          .getElementById("fecha")
+          .value;
+
+
+      const hora =
+        document
+          .getElementById("hora")
+          .value;
+
+
+      const responsable =
+        document
+          .getElementById("responsable")
+          .value
+          .trim();
+
+
+      const tarea =
+        document
+          .getElementById("tarea")
+          .value
+          .trim();
+
+
+      const mensaje =
+        document
+          .getElementById("mensajeAgenda");
+
+
+      const boton =
+        document
+          .querySelector(".btn-agenda");
+
+
+      /* ---------------------------------------------------
+         VALIDACIÓN
+      --------------------------------------------------- */
+
+      if (
+        !fecha ||
+        !hora ||
+        !responsable ||
+        !tarea
+      ) {
+
+        mensaje.className =
+          "mensaje-error";
+
+        mensaje.innerHTML =
+          "⚠️ Complete todos los campos.";
+
+        return;
+
+      }
+
+
+      /* ---------------------------------------------------
+         ESTADO DE ENVÍO
+      --------------------------------------------------- */
+
+      boton.disabled = true;
+
+      boton.innerHTML =
+        "⏳ REGISTRANDO...";
+
+
+      mensaje.className = "";
+
+      mensaje.innerHTML =
+        "Registrando cita...";
+
+
+      /* ---------------------------------------------------
+         DATOS PARA POWER AUTOMATE
+      --------------------------------------------------- */
+
+      const datos = {
+
+        fecha: fecha,
+
+        hora: hora,
+
+        responsable: responsable,
+
+        tarea: tarea
+
+      };
+
+
+      try {
+
+
+        /* =================================================
+           ÚNICA URL DE POWER AUTOMATE
+        ================================================= */
+
+        const respuesta =
+          await fetch(
+
+            "https://defaultb0364bc53bfe4864a2ed3ebb68c608.ad.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/13/workflows/7b179c0376af4fd5bb6c9ff23b949859/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XKrzIRP0OBFmvlYzcSU83qO2uovsZaEikW7205L1fCo",
+
+            {
+
+              method: "POST",
+
+              headers: {
+
+                "Content-Type":
+                  "application/json"
+
+              },
+
+              body:
+                JSON.stringify(datos)
+
+            }
+
+          );
+
+
+        /* -------------------------------------------------
+           RESPUESTA EXITOSA
+        ------------------------------------------------- */
+
+        if (respuesta.ok) {
+
+          mensaje.className =
+            "mensaje-exito";
+
+          mensaje.innerHTML =
+            "✓ Cita registrada correctamente.";
+
+
+          /* -----------------------------------------------
+             LIMPIAR FORMULARIO
+          ------------------------------------------------ */
+
+          document
+            .getElementById("fecha")
+            .value = "";
+
+
+          document
+            .getElementById("hora")
+            .value = "";
+
+
+          document
+            .getElementById("responsable")
+            .value = "";
+
+
+          document
+            .getElementById("tarea")
+            .value = "";
+
+        }
+
+
+        /* -------------------------------------------------
+           RESPUESTA CON ERROR
+        ------------------------------------------------- */
+
+        else {
+
+          mensaje.className =
+            "mensaje-error";
+
+          mensaje.innerHTML =
+            "❌ No se pudo registrar la cita.";
+
+        }
+
+
+      }
+
+
+      /* ---------------------------------------------------
+         ERROR DE CONEXIÓN
+      --------------------------------------------------- */
+
+      catch (error) {
+
+        console.error(
+          "Error Agenda:",
+          error
+        );
+
+        mensaje.className =
+          "mensaje-error";
+
+        mensaje.innerHTML =
+          "❌ Error de conexión con Power Automate.";
+
+      }
+
+
+      /* ---------------------------------------------------
+         RESTAURAR BOTÓN
+      --------------------------------------------------- */
+
+      boton.disabled = false;
+
+      boton.innerHTML =
+        "📅 ENVIAR CITA";
+
+    }
+
   </script>
+
+
 </body>
+
 </html>
